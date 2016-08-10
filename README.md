@@ -11,7 +11,7 @@ key=>value pair which is encoded into JSON and uploaded to S3.
 Example
 -------
 
-Google Sheet:
+Google Sheet (with formulas calculating the values):
 
 A | B
 ------ | ------
