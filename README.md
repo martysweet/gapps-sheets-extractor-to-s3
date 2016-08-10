@@ -8,6 +8,23 @@ sheet must be shared with the service account.
 The program then reads all elements in columns A and B, to create a 
 key=>value pair which is encoded into JSON and uploaded to S3.
 
+Example
+-------
+
+Google Sheet:
+A       B   
+------  ---
+wood    72
+rubber  12
+glass   34
+
+
+Output:
+    {"rubber": "34", "glass": "12", "wood": "72"}
+
+
+Configuration
+-------------
 The python script requires two configuration files, config.json and 
 credentials.json, as explained below.
 
@@ -50,7 +67,7 @@ Testing locally
 ---------------
 It is possible to test the script locally by running:
    
-    python main.py
+    /usr/bin/python2.7 main.py
 
 Deployment onto Lambda
 ----------------------
