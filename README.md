@@ -19,7 +19,8 @@ the Google Sheet you wish to open (...spreadsheets/d/_SHEETID_/edit...)
 {
   "s3_bucket": "spreadsheet-archive",
   "s3_key": "latest.json",
-  "sheet_id": "1SyH5Np4cAAAAtQqMbI9yKylYsdH0AsX2dRaaaav3L4"
+  "sheet_id": "1SyH5Np4cAAAAtQqMbI9yKylYsdH0AsX2dRaaaav3L4",
+  "worksheet_name": "Statistics"
 }
 ~~~
 

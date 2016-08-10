@@ -27,7 +27,7 @@ def lambda_handler(event, context):
     scopes = ['https://spreadsheets.google.com/feeds']
     credentials = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scopes=scopes)
     gc = gspread.authorize(credentials)
-    sheet = gc.open_by_key(config['sheet_id']).worksheet("Statistics")
+    sheet = gc.open_by_key(config['sheet_id']).worksheet(config['worksheet_name'])
 
     # Get the values
     gval = sheet.range("A1:B"+str(sheet.row_count))
