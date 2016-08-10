@@ -12,14 +12,16 @@ Example
 -------
 
 Google Sheet:
-A       B   
-------  ---
-wood    72
-rubber  12
-glass   34
+
+A | B
+------ | ------
+wood | 72
+rubber | 12
+glass | 34
 
 
 Output:
+
     {"rubber": "34", "glass": "12", "wood": "72"}
 
 
