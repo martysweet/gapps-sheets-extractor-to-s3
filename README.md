@@ -13,7 +13,7 @@ credentials.json, as explained below.
 
 config.json
 -----------
-The config.json file should contain the s3 parameters and sheet ID of
+The config.json file should contain the s3 and sheet parameters of
 the Google Sheet you wish to open (...spreadsheets/d/_SHEETID_/edit...)
 ~~~json
 {
@@ -49,6 +49,7 @@ See: https://developers.google.com/identity/protocols/OAuth2ServiceAccount
 Testing locally
 ---------------
 It is possible to test the script locally by running:
+   
     python main.py
 
 Deployment onto Lambda
