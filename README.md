@@ -11,15 +11,17 @@ key=>value pair which is encoded into JSON and uploaded to S3.
 Example
 -------
 
-Google Sheet:
-A       B   
-------  ---
-wood    72
-rubber  12
-glass   34
+Google Sheet (with formulas calculating the values):
+
+A | B
+------ | ------
+wood | 72
+rubber | 12
+glass | 34
 
 
 Output:
+
     {"rubber": "34", "glass": "12", "wood": "72"}
 
 
@@ -75,6 +77,10 @@ The main.py, config.json and credentials.json file should be uploaded
 to Lambda in a ZIP file. The environment should be set to Python 2.7 
 with a timeout of ~30 seconds. RAM requirements depends on the data 
 you are extracting, however 128MB will be plenty for most scenarios.
+To prepare the ZIP for upload, ensure you have the latest libraries
+in your project directory.
+
+    pip install gspread oauth2client -t .
 
 Other Deployments
 -----------------
