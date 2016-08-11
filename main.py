@@ -6,6 +6,7 @@ import StringIO
 
 debug = False
 
+
 def main():
     # Main function used for debugging
     global debug
@@ -30,13 +31,13 @@ def lambda_handler(event, context):
     sheet = gc.open_by_key(config['sheet_id']).worksheet(config['worksheet_name'])
 
     # Get the values
-    gval = sheet.range("A1:B"+str(sheet.row_count))
+    gval = sheet.range("A1:B" + str(sheet.row_count))
     data = {}
 
     # Get every key => value for A => B (If A is not blank)
     for i in range(sheet.row_count):
         if i % 2 == 0 and gval[i].value != '':
-            data[gval[i].value] = str(gval[i+1].value)
+            data[gval[i].value] = str(gval[i + 1].value)
 
     # Encode into JSON
     jsonstr = json.dumps(data)
@@ -45,7 +46,7 @@ def lambda_handler(event, context):
     if debug:
         print jsonstr
     else:
-        upload_to_s3(jsonstr)
+        return upload_to_s3(jsonstr)
 
     return
 
@@ -54,16 +55,17 @@ def upload_to_s3(data):
     try:
         s3 = boto3.client('s3')
         s3r = boto3.resource('s3')
-        # Make into 'file-like' object
-        output = StringIO.StringIO()
-        output.write(data)
+
         # Upload
-        s3r.Bucket(config['s3_bucket']).Object(config['s3_key']).put(Body=output)
+        s3r.Bucket(config['s3_bucket']).Object(config['s3_key']).put(Body=data)
         s3.put_object_acl(ACL='public-read', Bucket=config['s3_bucket'], Key=config['s3_key'])
         print "File uploaded to {}, key {}.".format(config['s3_bucket'], config['s3_key'])
+
+        return 0
+
     except Exception as e:
-        print(e)
-    return
+        raise Exception(e)
+        return -1
 
 
 if __name__ == '__main__':
